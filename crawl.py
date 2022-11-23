@@ -5,15 +5,10 @@ print(home)
 
 path = "/Users/billy/Desktop/hh"
 
-
-# This give the head of the path
-print(f"The dirname path is: {os.path.dirname(path)}")
-# This gives the tail of the path
-print(f"The basename path is: {os.path.basename(path)}")
-
-
 search = input("Enter search: ")
 
+print(f"The dirname path is: {os.path.dirname(path)}")
+print(f"The basename path is: {os.path.basename(path)}")
 
 for root, dir_names, file_names in os.walk(path):
     for f in file_names:
