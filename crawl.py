@@ -4,7 +4,9 @@ home = os.path.expanduser("~")
 print(home)
 
 # Current folder
-path = "./"
+# path = "./"
+
+path = "/Users/billy/Desktop/hh"
 
 search = input("Enter search: ")
 
