@@ -3,7 +3,8 @@ import os
 home = os.path.expanduser("~")
 print(home)
 
-path = "/Users/billy/Desktop/hh"
+# Current folder
+path = "./"
 
 search = input("Enter search: ")
 
