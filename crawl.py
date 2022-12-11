@@ -1,28 +1,15 @@
 import os
 
-home = os.path.expanduser("~")
-print(home)
+# Path to the directory you want to search
+dir_path = "/path/to/directory"
+# The word you want to search for
+search_word = input("Search for a word: ")
 
-# Current folder
-# path = "./"
-
-path = "/Users/billy/Desktop/hh"
-
-search = input("Enter search: ")
-
-#print(f"The dirname path is: {os.path.dirname(path)}")
-#print(f"The basename path is: {os.path.basename(path)}")
-
-for root, dir_names, file_names in os.walk(path):
-    for f in file_names:
-        fname = os.path.join(root, f)
-        if fname.endswith('.py'):
-            with open(fname) as myfile:
-                line = myfile.read()
-                c = line.count(search)
-                if c:
-                    print(f"The file name is: {fname}")
- #                   print(f"The count is: {c}")
-                else:
-                	print("No matches found")
-
+# Recursively search for the given word in the files of the given directory
+for root, dirs, files in os.walk(dir_path):
+    for f in files:
+        file_path = os.path.join(root, f)
+        with open(file_path) as file:
+            # Check if the search word is in the current file
+            if search_word in file.read():
+                print(f"Found '{search_word}' in file {file_path}")
