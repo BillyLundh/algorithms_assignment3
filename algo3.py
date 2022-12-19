@@ -1,7 +1,6 @@
 import os
 
-
-dir_path = "/path/to/directory"
+dir_path = input("Enter the path to the directory: ")
 search_word = input("Search for a word: ")
 
 for root, dirs, files in os.walk(dir_path):
