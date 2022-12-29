@@ -1,19 +1,22 @@
 import os
 
-dir_path = input("Enter the path to the directory: ")
-search_word = input("Search for a word: ")
-found = False
+def search_directory(folder_to_search, word_to_find):
+    for item in os.listdir(folder_to_search):
+        # Search recursively
+        if os.path.isdir(os.path.join(folder_to_search, item)):
+            search_directory(os.path.join(folder_to_search, item), word_to_find)
+        elif os.path.isfile(os.path.join(folder_to_search, item)):
+            # Search for word
+            look_for_word(os.path.join(folder_to_search, item), word_to_find)
 
-for root, dirs, files in os.walk(dir_path):
-    for f in files:
-        file_path = os.path.join(root, f)
-        with open(file_path) as file:
-            if search_word in file.read():
-                print(f"Found '{search_word}' in file {file_path}")
-                found = True
-                break
-    if found:
+def look_for_word(file, word_to_find):
+    with open(file) as f:
+        if word_to_find in f.read():
+            print(f"Found '{word_to_find}' in file {file}")
+
+while True:
+    folder_to_search = input(f"Enter the path to the directory ('q' to quit): ")
+    if folder_to_search == 'q':
         break
-
-if not found:
-    print(f"Could't find '{search_word}' in any files")
+    word_to_find = input("Enter the word to search for: ")
+    search_directory(folder_to_search, word_to_find)
